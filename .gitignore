@@ -1,22 +1,9 @@
-# Python / venv / caches
+# .gitignore
 .venv/
-venv/
 __pycache__/
 *.py[cod]
-*.egg-info/
-.cache/
-dist/
-build/
-
-# Env & local
-.env
-*.log
-
-# DB local
 *.db
 *.sqlite3
-
-# OS/IDE
 .vscode/
 .DS_Store
 Thumbs.db
