@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estoque - MVP</title>
+  <link rel="stylesheet" href="./styles.css"/>
+</head>
+<body>
+  <header>
+    <h1>📦 Sistema de Estoque</h1>
+    <div class="actions">
+      <button id="btn-export">Exportar CSV</button>
+      <label><input type="checkbox" id="chk-low"> Apenas baixo estoque</label>
+    </div>
+  </header>
+
+  <section class="toolbar">
+    <input type="text" id="search" placeholder="Buscar por nome, unidade ou categoria..." />
+    <select id="order-by">
+      <option value="name">Ordem: Nome</option>
+      <option value="quantity">Ordem: Quantidade</option>
+      <option value="created_at">Ordem: Criado</option>
+      <option value="updated_at">Ordem: Atualizado</option>
+      <option value="category">Ordem: Categoria</option>
+    </select>
+    <select id="order">
+      <option value="asc">Crescente</option>
+      <option value="desc">Decrescente</option>
+    </select>
+    <button id="btn-reload">Recarregar</button>
+  </section>
+
+  <section class="card">
+    <h2>➕ Adicionar / Somar ao Estoque</h2>
+    <form id="form-add">
+      <input required id="name" placeholder="Nome do material"/>
+      <input id="unit" placeholder="Unidade (ex.: unid, cx, pct, kg)" value="unid"/>
+      <input type="number" id="quantity" placeholder="Quantidade" value="1" min="0"/>
+      <input type="number" id="min_qty" placeholder="Estoque mínimo" value="0" min="0"/>
+      <input id="category" placeholder="Categoria (opcional)"/>
+      <button type="submit">Salvar</button>
+    </form>
+    <small>Se o nome + unidade já existir, a quantidade será somada automaticamente.</small>
+  </section>
+
+  <section class="card">
+    <h2>📋 Itens</h2>
+    <div class="table-wrap">
+      <table id="tbl">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Unidade</th>
+            <th>Qtd</th>
+            <th>Mín.</th>
+            <th>Categoria</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <tr><td colspan="6" class="muted">Carregando...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <span>Feito com ❤️ (FastAPI + SQLite)</span>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
